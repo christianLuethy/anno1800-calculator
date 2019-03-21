@@ -3,7 +3,7 @@ import { PopulationContext } from '../../App/App';
 
 // constants
 import parameters from '../../../constants/parameters'
-import * as localText from '../../../constants/localText';
+import localText from '../../../constants/localText';
 
 // components
 

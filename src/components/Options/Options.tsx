@@ -3,7 +3,7 @@ import { animated, useTransition } from 'react-spring';
 import { PopulationContext } from '../App/App';
 
 // constants
-import * as localText from '../../constants/localText';
+import localText from '../../constants/localText';
 
 // components
 

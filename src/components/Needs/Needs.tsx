@@ -1,7 +1,7 @@
 import React from 'react';
 
 // constants
-import * as localText from '../../constants/localText';
+import localText from '../../constants/localText';
 
 // components
 import Product from './Product';

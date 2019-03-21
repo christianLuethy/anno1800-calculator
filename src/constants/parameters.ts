@@ -2620,14 +2620,14 @@ const products: {[key: number]: ProductType} = {
 }
 
 const languages: string[] = [
-  'en',
-  'fr',
   'de',
+  'en',
+  'es',
+  'fr',
   'it',
   'pl',
   'pt',
   'ru',
-  'es',
 ]
 
 const parameters = {

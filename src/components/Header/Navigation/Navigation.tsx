@@ -4,7 +4,7 @@ import { PopulationContext } from '../../App/App';
 
 // constants
 import * as ROUTES from '../../../constants/routes';
-import * as localText from '../../../constants/localText';
+import localText from '../../../constants/localText';
 
 // components
 

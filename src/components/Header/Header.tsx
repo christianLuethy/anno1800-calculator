@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 // constants
 import * as ROUTES from '../../constants/routes';
-import * as localText from '../../constants/localText';
+import localText from '../../constants/localText';
 
 // components
 import LanguagePicker from './LanguagePicker/LanguagePicker';
