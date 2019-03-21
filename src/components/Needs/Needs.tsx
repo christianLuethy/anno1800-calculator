@@ -1,6 +1,7 @@
 import React from 'react';
 
 // constants
+import * as localText from '../../constants/localText';
 
 // components
 import Product from './Product';
@@ -41,7 +42,7 @@ const Needs = ({ language, needs, neededProducts }: NeedsPropTypes): any => {
 
     return (
       <div key={type}>
-        <h2 className={styles.typeTitle} >{type} Needs</h2>
+        <h2 className={styles.typeTitle} >{type === 'basic' ? localText.basicNeed[language] : localText.luxuryNeeds[language]} </h2>
         <div className={styles.buildingList} >
           {needsOfType}
         </div> 

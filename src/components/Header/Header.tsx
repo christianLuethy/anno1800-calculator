@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 // constants
-import * as ROUTES from '../../constants/routes'
+import * as ROUTES from '../../constants/routes';
+import * as localText from '../../constants/localText';
 
 // components
 import LanguagePicker from './LanguagePicker/LanguagePicker';
@@ -22,7 +23,7 @@ interface HeaderPropTypes {
 const Header = ({ language }: HeaderPropTypes) => (
   <header className={styles.header} >
     <div className={styles.topBar}>
-      <Link className={styles.text} to={ROUTES.LANDING}>Anno 1800 Rechner</Link>
+      <Link className={styles.text} to={ROUTES.LANDING}>Anno 1800 {localText.calculator[language]}</Link>
       <LanguagePicker language={language} />
     </div>
     <Navigation language={language} />

@@ -12,7 +12,7 @@ import styles from './Landing.module.css'
 
 const Landing = () => (
   <div className={styles.landing}>
-    <h1>Landing</h1>
+    <h1>Home</h1>
   </div>
 )
 

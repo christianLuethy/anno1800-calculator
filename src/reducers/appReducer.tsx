@@ -11,12 +11,14 @@ export interface AppActionTypes {
 }
 
 const initialAppState: AppStateTypes = {
-  language: 'german',
+  language: 'en',
   showChainGlobal: false,
   showOptions: false,
 }
 const appReducer = (state: AppStateTypes, action: AppActionTypes): AppStateTypes => {
   switch(action.type) {
+    case 'SET_LANGUAGE': 
+      return { ...state, language: action.language};
     case 'LANGUAGE_CHANGE':
       return { ...state, language: action.language };
     case 'TOGGLE_OPTIONS': 

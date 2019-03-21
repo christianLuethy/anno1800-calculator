@@ -54,9 +54,11 @@ const App = () => {
   // retrieve population data from the local storage
   useEffect(() => {
     const cachedPopulationState = localStorage.getItem('populationState')
+    const lang = parameters.languages.find((l) => l === navigator.language) ? navigator.language : 'en';
     if (cachedPopulationState) {
       populationDispatch({ type: 'POPULATION_LOCAL_STORE', populationState: JSON.parse(cachedPopulationState) });
     }
+    appDispatch({type: 'SET_LANGUAGE', language: lang});
   }, [])
 
   return (
@@ -73,7 +75,7 @@ const App = () => {
                 <Route path={ROUTES.NEEDS} render={() => <Needs neededProducts={neededProducts} needs={needs} language={language}/>} />
               </Switch>
             </div>
-            <Options showOptions={showOptions}/>
+            <Options language={language} showOptions={showOptions}/>
           </main>
         </div>
       </PopulationContext.Provider>

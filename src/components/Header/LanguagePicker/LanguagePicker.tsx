@@ -3,6 +3,7 @@ import { PopulationContext } from '../../App/App';
 
 // constants
 import parameters from '../../../constants/parameters'
+import * as localText from '../../../constants/localText';
 
 // components
 
@@ -21,7 +22,7 @@ const LanguagePicker = ({ language }: LanguagePickerPropTypes) => {
   const { appDispatch } = useContext(PopulationContext);
   return (
     <form className={styles.form} >
-      <label className={styles.label} >Language: 
+      <label className={styles.label} >{localText.language[language]}: 
         <select className={styles.select} value={language} onChange={(e) => appDispatch({ type: 'LANGUAGE_CHANGE', language: e.target.value })} >
           {parameters.languages.map((language: any) => {
             return (
