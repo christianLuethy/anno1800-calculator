@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { animated, useTransition } from 'react-spring';
 import { PopulationContext } from '../App/App';
 
 // constants
 import localText from '../../constants/localText';
+import * as ROUTES from '../../constants/routes';
 
 // components
 
@@ -29,8 +31,15 @@ const Options = ({language, showOptions}: OptionsPropTypes): any => {
 
   return transitions.map(({ item, key, props }) => (item &&
     <animated.div key={key} style={props} className={styles.sideBar}>
-      <h1>{localText.options[language]}</h1>
-      <div className={showChainGlobal ? styles.activeButton : styles.button} onClick={() => appDispatch({type: 'TOGGLE_CHAIN'})}>{localText.productionChains[language]}</div>
+      <Switch>
+        <Route path={ROUTES.PRODUCTION} render={() => <div>production chain options</div>} />
+        <Route path={ROUTES.NEEDS} render={() => (
+          <div>
+            <h1>{localText.options[language]}</h1>
+            <div className={showChainGlobal ? styles.activeButton : styles.button} onClick={() => appDispatch({type: 'TOGGLE_CHAIN'})}>{localText.productionChains[language]}</div>
+          </div>
+        )} />
+      </Switch>
     </animated.div>
   ))
 }

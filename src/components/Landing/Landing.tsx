@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 // constants
 
@@ -12,6 +13,7 @@ import styles from './Landing.module.css'
 
 const Landing = () => (
   <div className={styles.landing}>
+    <Redirect to='/population-needs' /> 
     <h1>Home</h1>
   </div>
 )
