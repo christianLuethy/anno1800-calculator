@@ -1,0 +1,10 @@
+.form {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.select {
+  margin-left: 5px;
+}

@@ -1,0 +1,247 @@
+20000000 Old World
+30000000 New World
+
+20100000 Farmers
+
+10100100 Dirt Road
+10100200 Marketplace
+20100100 Farmer Residence
+10100300 Small Warehouse
+10100401 Lumberjack's Hut
+10000001 Wood
+10100502 Sawmill
+10000002 Timber
+20100203 Fishery
+20000003 Fish
+20100304 Potato Farm
+20000004 Potatoes
+20100405 Schnapps Distillery
+20000005 Schnapps
+20100506 Sheep Farm
+20000006 Wool
+20100607 Framework Knitters
+20000007 Work Clothes
+10100600 Fire Station
+20100700 Pub
+20100800 Grass
+20100900 Bush
+20101000 Poplar
+20101100 Fully Grown Tree
+
+
+20200000 Workers
+
+10200100 Paved Street
+10200208 Clay Pit
+10000008 Clay
+10200309 Brick Factory
+10000009 Brick
+10200400 Trade Union
+20200110 Pig Farm
+20000010 Pigs
+20200211 Slaughterhouse
+20000011 Sausages
+10200500 Quay
+10200600 Sailing Shipyard
+10200700 Depot
+10200800 Harbourmaster's Office
+10200900 Mounted Guns
+10201012 Sailmakers
+10000012 Sails
+20200313 Grain Farm
+20000013 Grain
+20200414 Flour Mill
+20000014 Flour
+20200515 Bakery
+20000015 Bread
+20200600 Church
+20200716 Rendering Works
+20000016 Tallow
+20200817 Soap Factory
+20000017 Soap
+20200918 Iron Mine
+20000018 Iron
+20201019 Charcoal Kiln
+20000019 Choal
+20201120 Furnace
+20000020 Steel
+20201221 Steelworks
+20000021 Steel Beams
+20201322 Weapon Factory
+20000022 Weapons
+20201423 Malthouse
+20000023 Malt
+20201524 Hop Farm
+20000024 Hops
+20201625 Brewery
+20000025 Beer
+10201100 Police Station
+10201200 Path
+10201300 Small Tree
+10201400 Cypress
+10201500 Newsstand
+20201700 School
+
+
+20300000 Artisans
+
+20300126 Sand Mine
+20000026 Sand
+20300227 Glassmakers
+20000027 Glass
+20300328 Window Makers
+20000028 Windows
+10300129 Cattle Farm
+10000029 Beef
+20300430 Red Pepper Farm
+20000030 Red Peppers
+20300531 Artisanal Kitchen
+20000031 Goulasch
+20300632 Cannery
+20000032 Canned Food
+10300200 Town Hall
+20300700 Hedge
+20300800 Garden Benches
+20300900 Memorial Statue
+20301000 Garden
+20301100 Gazebo Garden
+10300300 Public Mooring
+10300400 Repair Crane
+10300500 Pier
+20301219 Coal Mine
+20301333 Sewing Machine Factory
+20000033 Sweing Machines
+20301400 Variety Theatre
+10300600 Zoo
+20301500 Hedge (Paved)
+20301600 Paving
+20301700 Piazza Benches
+20301800 Newsstand
+20301900 Memorial Statue
+20302034 Hunting Cabin
+20000034 Furs
+20302135 Fur Dealer
+20000035 Fur Coats
+10300700 Hospital
+20302200 University
+10300800 Museum
+
+
+30100000 Jornaleros
+
+30100100 Jornalero Residence
+30100236 Fish Oil Factory
+30000036 Fish Oil
+30100337 Plantain Plantation
+30000037 Plantains
+30100438 Fried Plantain Kitchen
+30000038 Fried Plantains
+30100539 Pearl Farm
+30000039 Pearls
+30100640 Cotton Plantation
+30000040 Cotton
+30100741 Cotton Mill
+30000041 Cotton Fabric
+30100842 Sugar Cane Plantation
+30000042 Sugar 
+30100943 Rum Distillery
+30000043 Rum
+30101044 Alpaca Farm
+30000044 Alpaca Wool
+30101145 Poncho Darner
+30000045 Ponchos
+30101246 Caoutchouc Plantation
+30000046 Caoutchouc
+30101300 Chapel
+
+
+20400000 Engineers
+
+20400147 Limestone Quarry
+20000047 Limestone
+20400248 Concrete Factory
+20000048 Concrete
+10400149 Oil Refinery
+10000049 Oil
+10400200 Rails
+10400300 Small Oil Harbour
+10400500 Oil Storage
+20400300 Oil Power Plant
+20400400 Coal Power Plant
+20400550 Zinc Mine
+20000050 Zinc
+20400651 Copper Mine
+20000051 Copper
+20400752 Brass Smeltery
+20000052 Brass
+20400853 Spectacle Factory
+20000053 Spectacles
+20400900 Steam Shipyard
+20401054 Motor Assembly Limestone
+20000054 Motors
+20401155 Bicycle Factory
+20000055 Bicycles
+20401256 Gold Mine
+20000056 Gold Ore
+20401357 Goldsmiths
+20000057 Gold
+20401458 Clockmakers
+20000058 Clocks
+20401559 Filament Factory
+20000059 Filament
+20401660 Light Bulb Factory
+20000060 Light Bulbs
+20401700 Bank
+
+
+30200000 Obreros
+
+30200161 Corn Farm
+30000061 Corn
+30200262 Tortilla Maker
+30000062 Tortillas
+30200363 Coffee Plantation
+30000063 Coffee Beans
+30200464 Coffee Roaster
+30000064 Coffee
+30200500 Boxing Arena
+30200665 Felt Producer
+30000065 Felt Fabric
+30200766 Bombin Weaver
+30000066 Bombins
+30200867 Tobacco Plantation
+30000067 Tobacco
+30200968 Marquetry Workshop
+30000068 (Marquetry)
+30201069 Cigar Factory
+30000069 Cigars
+30201170 Cocoa Plantation
+30000070 Cocoa
+30201271 Sugar Refinery
+30000071 Sugar
+30201372 Chocolate Factory
+30000072 Chocolate
+
+
+20500000 Investors
+
+20500100 World's Fair: Foundation
+20500273 Salpeter Works
+20000073 Salpeter
+20500374 Dynamite Factory
+20000074 Dynamite
+20500475 Heavy Weapons Factory
+20000075 Heavy Weapons
+20500576 Vineyard
+20000076 Grapes
+20500677 Champagne Cellar
+20000077 Champagne
+20500700 Members Club
+20500778 Jewellers
+20000078 Jewellery
+20500879 Gramophone Factory
+20000079 Gramophones
+20500980 Coachmakers
+20000080 Coaches
+20501081 Cab Assembly Line
+20000081 Cabs

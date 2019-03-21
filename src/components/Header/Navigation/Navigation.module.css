@@ -1,0 +1,51 @@
+.navBar {
+  background-color: inherit;
+  border-bottom: 1px solid rgb(203, 187, 175);
+  height: 37px;
+  left: 0;
+  line-height: 17px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 23px;
+  
+}
+.nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  cursor: pointer;
+  display: inline;
+}
+
+.link {
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: inherit;
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: rgb(240, 221, 207);
+}
+.link:visited {
+  color: inherit;
+  border: inherit;
+  text-decoration: inherit;
+}
+
+.active {
+  border: 1px solid rgb(203, 187, 175);
+  padding: 4px;
+}
+
+.filler {
+  display: block;
+  flex-grow: 1;
+}

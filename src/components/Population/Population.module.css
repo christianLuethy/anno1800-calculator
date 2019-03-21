@@ -1,0 +1,85 @@
+.populationBar {
+  background-color: rgb(255, 252, 250);
+  border-bottom: 1px solid rgb(203, 187, 175);
+  overflow: hidden;
+  padding-bottom: 24px;
+}
+
+.population {
+  border-top: 1px solid rgb(203, 187, 175);
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+.world {
+  display: block;
+}
+
+.socialClasses {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+.socialClass {
+  display: block;
+  width: 96px;
+  border-left: 1px solid rgb(203, 187, 175);
+  border-bottom: 1px solid rgb(203, 187, 175);
+}
+
+.resetButton {
+  border-bottom: 1px solid rgb(203, 187, 175);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  height: 33px;
+  width: 33px;
+}
+.x {
+  height: 33px;
+  width: 33px;
+}
+
+.input {
+  background-color: inherit;
+  box-sizing: border-box;
+  border: none;
+  color: inherit;
+  font: inherit;
+  height: 33px;
+  padding: 2px 10px;
+  text-align: right;
+  width: 96px;
+}
+.input:focus {
+  background-color: rgb(240, 221, 207)
+}
+
+.icon {
+  cursor: pointer;
+  height: 24px;
+  padding: 9px 0 0 10px;
+  position: absolute;
+  width: 24x;
+}
+
+.filler {
+  display: block;
+  border-bottom: 1px solid rgb(203, 187, 175);
+  border-left: 1px solid rgb(203, 187, 175);
+  flex: 1;
+  min-width: 0;
+}
+
+.instructions {
+  margin: 0;
+  line-height: 33px;
+  overflow: hidden;
+  padding-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+

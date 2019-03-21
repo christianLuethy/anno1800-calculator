@@ -1,0 +1,36 @@
+.sideBar {
+  background-color: rgb(255, 252, 250);
+  border-left: 1px solid rgb(203, 187, 175);
+  border-top: 1px solid rgb(203, 187, 175);
+  overflow: hidden;
+  width: 270px;
+}
+
+.button {
+  border: 1px solid rgb(203, 187, 175);
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: inherit;
+  display: block;
+  margin: 5px;
+  overflow: hidden;
+  padding: 4px;
+  text-decoration: none;
+  width: 260px;
+}
+
+.button:hover {
+  background-color: rgb(240, 221, 207);
+}
+.button:visited {
+  color: inherit;
+  border: inherit;
+  text-decoration: inherit;
+}
+
+.activeButton {
+  composes: button;
+
+  background-color: rgb(240, 221, 207);
+}
