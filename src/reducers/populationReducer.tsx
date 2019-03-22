@@ -1,5 +1,6 @@
 import parameters, { NeedType, PopulationType } from '../constants/parameters'
 import { useReducer } from 'react';
+import Product from '../components/Needs/Product';
 
 interface PopulationStateTypes {
   neededProducts: number[],
@@ -7,11 +8,18 @@ interface PopulationStateTypes {
     basic: {[key: number]: number},
     luxury: {[key: number]: number},
     [key: string]: {[key: number]: number},
-  }
+  },
+  options: {
+    [key: string]: {
+      increaseDecrease: number,
+      withElectricity: boolean
+    }
+  },
   population: {[key: string]: number},
 }
 export interface PopulationActionTypes {
   type: string,
+  value?: number,
   [key: string]: any,
 }
 
@@ -21,6 +29,9 @@ const initialPopulationState: PopulationStateTypes = {
   needs: {
     basic: {},
     luxury: {},
+  },
+  options: {
+    
   },
   population: {
     '20100000': 0, // Farmers
@@ -34,17 +45,34 @@ const initialPopulationState: PopulationStateTypes = {
 }
 
 const populationReducer = (state: PopulationStateTypes, action: PopulationActionTypes): PopulationStateTypes => {
+  let newIncreaseDecrease: number;
+  let newState: PopulationStateTypes;
   switch(action.type) {
+    case 'DECREASE': 
+    case 'INCREASE':
+      newIncreaseDecrease = action.type === 'DECREASE' 
+        ? state.options[action.id].increaseDecrease - 1
+        : state.options[action.id].increaseDecrease + 1;
+
+      return Object.assign({}, state, { options: { ...state.options, [action.id]: { ...state.options[action.id], increaseDecrease: newIncreaseDecrease}}})
+    case 'INCREASE_DECREASE_CHANGE':
+      return Object.assign({}, state, { options: { ...state.options, [action.id]: { ...state.options[action.id], increaseDecrease: action.value}}})
     case 'POPULATION_LOCAL_STORE':
-      return { ...action.populationState };
+      return Object.assign({}, action.populationState)
     case 'POPULATION_CHANGE':
       const newPopulation = { ...state.population, [action.id]: action.number };
-      const newState = { ...state, population: newPopulation, neededProducts: checkIfNeeded(newPopulation), needs: calculateNeeds(newPopulation)};
+      
+      const newOptions: PopulationStateTypes["options"] = {}
+      checkIfNeeded(newPopulation).filter((id) => id % 10 !== 0).map((product) => parameters.products[product].producerIds).forEach((ids) => { ids.forEach((id) => { newOptions[id] = { increaseDecrease: 0, withElectricity: false}})})
+
+      newState = Object.assign({}, state, { population: newPopulation, neededProducts: checkIfNeeded(newPopulation), needs: calculateNeeds(newPopulation), options: newOptions});
       localStorage.setItem('populationState', JSON.stringify(newState));
       return newState
     case 'POPULATION_RESET':
       localStorage.setItem('populationState', JSON.stringify(initialPopulationState));
-      return { ...initialPopulationState }
+      return Object.assign({}, initialPopulationState)
+    case 'TOGGLE_ELECTRICITY':
+      return  Object.assign({}, state, {options: { ...state.options, [action.id]: { ...state.options[action.id], withElectricity: !state.options[action.id].withElectricity}}})
     default:
       return state;
   }

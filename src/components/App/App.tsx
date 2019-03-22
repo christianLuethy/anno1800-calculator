@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // constants
 import * as ROUTES from '../../constants/routes';
-import parameters from '../../constants/parameters';
+import parameters, { ProductType } from '../../constants/parameters';
 
 // components
 import Header from '../Header/Header';
@@ -28,6 +28,7 @@ console.log(parameters)
 
 interface ContextTypes {
   appDispatch: React.Dispatch<AppActionTypes>,
+  options: { [key: string]: { increaseDecrease: number, withElectricity: boolean}},
   population: {[key: number]: number},
   populationDispatch: React.Dispatch<PopulationActionTypes>,
   showChainGlobal: boolean,
@@ -36,6 +37,7 @@ interface ContextTypes {
 
 export const PopulationContext = React.createContext<ContextTypes>({
   appDispatch: () => {},
+  options: {},
   population: {},
   populationDispatch: () => {},
   showChainGlobal: false,
@@ -48,8 +50,8 @@ export const PopulationContext = React.createContext<ContextTypes>({
 
 
 const App = () => {
-  const [{language, showChainGlobal, showOptions}, appDispatch] = useAppReducer();
-  const [{ needs, neededProducts, population }, populationDispatch] = usePopulationReducer()
+  const [{ language, showChainGlobal, showOptions }, appDispatch] = useAppReducer();
+  const [{ needs, neededProducts, options, population }, populationDispatch] = usePopulationReducer()
   
   // retrieve population data from the local storage
   useEffect(() => {
@@ -57,13 +59,14 @@ const App = () => {
     const lang = parameters.languages.find((l) => l === navigator.language) ? navigator.language : 'en';
     if (cachedPopulationState) {
       populationDispatch({ type: 'POPULATION_LOCAL_STORE', populationState: JSON.parse(cachedPopulationState) });
-    }
+    } 
     appDispatch({type: 'SET_LANGUAGE', language: lang});
   }, [])
 
+
   return (
     <Router>
-      <PopulationContext.Provider value={{ appDispatch, population, populationDispatch, showChainGlobal, showOptions }}>
+      <PopulationContext.Provider value={{ appDispatch, options, population, populationDispatch, showChainGlobal, showOptions }}>
         <div className={styles.app}>
           <Header language={language} />
           <main className={styles.main}>

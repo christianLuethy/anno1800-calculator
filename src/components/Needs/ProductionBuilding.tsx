@@ -28,14 +28,10 @@ const ProductionBuilding = ({ buildingID, isAlternative, isEndProducer, language
   const [showChain, toggleShowchain ] = useState(false);
 
   //// context //////////
-  const { showChainGlobal } = useContext(PopulationContext);
+  const { options, showChainGlobal } = useContext(PopulationContext);
 
 
-  useEffect(() => {
-    if (showChain != showChainGlobal) {
-      toggleShowchain(showChainGlobal)
-    }
-  }, [showChainGlobal]) 
+  
 
   const building = parameters.buildings.production[buildingID];
   const neededProducts: JSX.Element[] | null = building 
@@ -50,8 +46,12 @@ const ProductionBuilding = ({ buildingID, isAlternative, isEndProducer, language
       : null 
     : null;
 
-  const numberOfBuildings: number = Math.ceil(productNeed / building.perMinute) || 0;
-  const productNeedRest: number = productNeed / building.perMinute - (numberOfBuildings -1) || 0;
+  const plusMinus = isEndProducer ? options[buildingID].increaseDecrease : 1;
+  const double = isEndProducer ? options[buildingID].withElectricity ? 2 : 1 : 1;
+  const multiplyer = Math.sign(plusMinus) === 0 ? 1 : 1 + plusMinus / 100;
+  const perMinute = building.perMinute * double * multiplyer;
+  const numberOfBuildings: number = Math.ceil(productNeed / perMinute) || 0;
+  const productNeedRest: number = productNeed / perMinute - (numberOfBuildings -1) || 0;
   // workloadAll shows at which capacity all the buildings combined run
   const workloadAll = Math.round(100 / numberOfBuildings * (productNeed / building.perMinute)) || 0;
   // workloadOne shows at which capacity the last building runs if all other buildings where at 100% capacity
@@ -70,9 +70,15 @@ const ProductionBuilding = ({ buildingID, isAlternative, isEndProducer, language
 
   ///// effects //////////
   useEffect(() => { !isEndProducer && toggleShowchain(true) }, [])
+
+  useEffect(() => {
+    if (showChain != showChainGlobal) {
+      toggleShowchain(showChainGlobal)
+    }
+  }, [showChainGlobal]) 
   
   return building
-    ? <div className={styles.building} onClick={() => isEndProducer && toggleShowchain(!showChain)}>
+    ? <div className={`${styles.building} ${double === 2 && styles.eBuilding}`} onClick={() => isEndProducer && toggleShowchain(!showChain)}>
         <div className={styles.buildingData}>
           {isAlternative && <p className={styles.textOr}>or</p>}
           <div className={numberStyle}>{numberOfBuildings}x</div>

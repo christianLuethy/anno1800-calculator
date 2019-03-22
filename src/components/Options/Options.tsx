@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { animated, useTransition } from 'react-spring';
-import { PopulationContext } from '../App/App';
 
 // constants
-import localText from '../../constants/localText';
 import * as ROUTES from '../../constants/routes';
 
 // components
+import NeedsOptions from './NeedsOptions';
 
 // styles
 import styles from './Options.module.css';
@@ -21,7 +20,6 @@ interface OptionsPropTypes {
 }
 
 const Options = ({language, showOptions}: OptionsPropTypes): any => { 
-  const { appDispatch, showChainGlobal } = useContext(PopulationContext)
 
   const transitions = useTransition(showOptions, null, {
     from: { width: '0px' },
@@ -33,16 +31,10 @@ const Options = ({language, showOptions}: OptionsPropTypes): any => {
     <animated.div key={key} style={props} className={styles.sideBar}>
       <Switch>
         <Route path={ROUTES.PRODUCTION} render={() => <div>production chain options</div>} />
-        <Route path={ROUTES.NEEDS} render={() => (
-          <div>
-            <h1>{localText.options[language]}</h1>
-            <div className={showChainGlobal ? styles.activeButton : styles.button} onClick={() => appDispatch({type: 'TOGGLE_CHAIN'})}>{localText.productionChains[language]}</div>
-          </div>
-        )} />
+        <Route path={ROUTES.NEEDS} render={() => <NeedsOptions language={language} />} />
       </Switch>
     </animated.div>
   ))
 }
 
 export default Options;
-

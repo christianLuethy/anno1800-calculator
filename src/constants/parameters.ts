@@ -99,7 +99,7 @@ interface Buildings {
   },
 }
 
-interface ProductType {
+export interface ProductType {
   id: number,
   name: string,
   icon: string,
