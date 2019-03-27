@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
-import { PopulationContext } from '../../App/App';
+import React from 'react'
 
 // constants
 import parameters from '../../../constants/parameters'
 import localText from '../../../constants/localText';
 
 // components
+
+// hooks
+import useAppContext from '../../../hooks/useAppContext'
 
 // styles
 import styles from './LanguagePicker.module.css';
@@ -19,7 +21,7 @@ interface LanguagePickerPropTypes {
 }
 
 const LanguagePicker = ({ language }: LanguagePickerPropTypes) => { 
-  const { appDispatch } = useContext(PopulationContext);
+  const { appDispatch } = useAppContext();
   return (
     <form className={styles.form} >
       <label className={styles.label} >{localText.language[language]}: 

@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
-import { PopulationContext } from '../App/App';
+import React from 'react';
 
 // constants
 import parameters from '../../constants/parameters';
 
 // components
 import Button from '../Button/Button';
+
+// hooks
+import useAppContext from '../../hooks/useAppContext'
 
 // styles
 import styles from './Options.module.css';
@@ -16,7 +18,7 @@ interface ProductOptionTypes {
 };
 
 const ProductOption = ({buildingID}: ProductOptionTypes) => {
-  const { options, populationDispatch} = useContext(PopulationContext)
+  const { options, populationDispatch} = useAppContext();
   const building = parameters.buildings.production[Number.parseInt(buildingID)];
 
   const handleChange = (value: any) => {

@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import { PopulationContext } from '../App/App';
+import React from 'react'
 
 // constants
 import { SocialClassType } from '../../constants/parameters';
 
 // components
+
+// hooks
+import useAppContext from '../../hooks/useAppContext'
 
 //styles
 import styles from './Population.module.css';
@@ -19,7 +21,7 @@ interface SocialClassPropTypes {
 }
 
 const SocialClass = ({ socialClass }: SocialClassPropTypes) => {
-  const { population, populationDispatch } = useContext(PopulationContext);
+  const { population, populationDispatch } = useAppContext();
   let inputField: HTMLInputElement | null;
   
   const handleChange = (value: any) => {

@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring'
-import { PopulationContext } from '../App/App';
 
 // constants
 import parameters from '../../constants/parameters';
 
 // components
 import World from './World';
+
+// hooks
+import useAppContext from '../../hooks/useAppContext'
 
 //styles
 import styles from './Population.module.css';
@@ -21,7 +23,7 @@ interface PopulationFormPropTypes {
 }
 
 const PopulationForm = ({ language, neededProducts   }: PopulationFormPropTypes) => {
-  const { populationDispatch } = useContext(PopulationContext)
+  const { populationDispatch } = useAppContext();
   
   const worlds = Object.keys(parameters.population).map((key: string) => 
       <World key={key} language={language} world={parameters.population[key]} />

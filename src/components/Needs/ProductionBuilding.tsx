@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { PopulationContext } from '../App/App';
+import React, { useState, useEffect } from 'react';
 
 // constants
 import parameters from '../../constants/parameters';
@@ -7,6 +6,9 @@ import parameters from '../../constants/parameters';
 // components
 import Product from './Product';
 import CapacityBar from './CapacityBar';
+
+// hooks
+import useAppContext from '../../hooks/useAppContext'
 
 // styles
 import styles from './Needs.module.css'
@@ -28,7 +30,7 @@ const ProductionBuilding = ({ buildingID, isAlternative, isEndProducer, language
   const [showChain, toggleShowchain ] = useState(false);
 
   //// context //////////
-  const { options, showChainGlobal } = useContext(PopulationContext);
+  const { options, showChainGlobal } = useAppContext();
 
 
   

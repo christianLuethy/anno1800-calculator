@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { PopulationContext } from '../../App/App';
 
 // constants
 import * as ROUTES from '../../../constants/routes';
 import localText from '../../../constants/localText';
 
 // components
+
+// hooks
+import useAppContext from '../../../hooks/useAppContext'
 
 // styles
 import styles from './Navigation.module.css'
@@ -21,7 +23,7 @@ interface NavigationPropTypes {
 
 
 const Navigation = ({ language }: NavigationPropTypes) => { 
-  const { showOptions, appDispatch } = useContext(PopulationContext)
+  const { showOptions, appDispatch } = useAppContext()
 
   return (
     <nav className={styles.navBar}>

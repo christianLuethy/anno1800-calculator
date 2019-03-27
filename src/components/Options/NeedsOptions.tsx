@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { PopulationContext } from '../App/App';
+import React from 'react';
 
 // constants
 import localText from '../../constants/localText';
@@ -7,6 +6,9 @@ import localText from '../../constants/localText';
 // components 
 import Button from '../Button/Button';
 import ProductOption from './ProductOption';
+
+// hooks
+import useAppContext from '../../hooks/useAppContext'
 
 // styles
 import styles from './Options.module.css';
@@ -17,7 +19,7 @@ interface NeedsOptionsTypes {
 }
 
 const NeedsOptions= ({language}: NeedsOptionsTypes ) => {
-  const { appDispatch, options, showChainGlobal } = useContext(PopulationContext);
+  const { appDispatch, options, showChainGlobal } = useAppContext()
 
   return (
     <div className={styles.options}>

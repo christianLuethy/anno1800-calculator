@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // constants
 import * as ROUTES from '../../constants/routes';
-import parameters, { ProductType } from '../../constants/parameters';
+import parameters from '../../constants/parameters';
 
 // components
 import Header from '../Header/Header';
@@ -13,36 +13,18 @@ import Options from '../Options/Options';
 import Population from '../Population/Population';
 import ProductionChains from '../ProductionChains/ProductionChains';
 
-// reducers
-import useAppReducer, { AppActionTypes } from '../../reducers/appReducer';
-import usePopulationReducer, { PopulationActionTypes } from '../../reducers/populationReducer';
+// context 
+import { AppContext } from '../../hooks/useAppContext'
+
+// hooks
+import useAppReducer from '../../hooks/useAppReducer';
+import usePopulationReducer from '../../hooks/usePopulationReducer';
 
 // styles
 import styles from './App.module.css';
 
 console.log(parameters)
 
-
-///////////////////////////// Population Context //////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-interface ContextTypes {
-  appDispatch: React.Dispatch<AppActionTypes>,
-  options: { [key: string]: { increaseDecrease: number, withElectricity: boolean}},
-  population: {[key: number]: number},
-  populationDispatch: React.Dispatch<PopulationActionTypes>,
-  showChainGlobal: boolean,
-  showOptions: boolean,
-}
-
-export const PopulationContext = React.createContext<ContextTypes>({
-  appDispatch: () => {},
-  options: {},
-  population: {},
-  populationDispatch: () => {},
-  showChainGlobal: false,
-  showOptions: false,
-})
 
 
 ///////////////////////////// App /////////////////////////////////////////////
@@ -66,7 +48,7 @@ const App = () => {
 
   return (
     <Router>
-      <PopulationContext.Provider value={{ appDispatch, options, population, populationDispatch, showChainGlobal, showOptions }}>
+      <AppContext.Provider value={{ appDispatch, options, population, populationDispatch, showChainGlobal, showOptions }}>
         <div className={styles.app}>
           <Header language={language} />
           <main className={styles.main}>
@@ -81,7 +63,7 @@ const App = () => {
             <Options language={language} showOptions={showOptions}/>
           </main>
         </div>
-      </PopulationContext.Provider>
+      </AppContext.Provider>
     </Router>
   )
 }
