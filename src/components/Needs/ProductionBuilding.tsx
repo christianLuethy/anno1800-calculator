@@ -82,6 +82,7 @@ const ProductionBuilding = ({ buildingID, isAlternative, isEndProducer, language
   return building
     ? <div className={`${styles.building} ${double === 2 && styles.eBuilding}`} onClick={() => isEndProducer && toggleShowchain(!showChain)}>
         <div className={styles.buildingData}>
+          {isEndProducer && <p className={styles.absoluteNeed}>{productNeed.toFixed(2)}</p>}
           {isAlternative && <p className={styles.textOr}>or</p>}
           <div className={numberStyle}>{numberOfBuildings}x</div>
           <img className={styles.icon} src={process.env.PUBLIC_URL + building.icon} />
