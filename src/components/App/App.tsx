@@ -40,7 +40,14 @@ const App = () => {
     const cachedPopulationState = localStorage.getItem('populationState')
     const lang = parameters.languages.find((l) => l === navigator.language) ? navigator.language : 'en';
     if (cachedPopulationState) {
-      populationDispatch({ type: 'POPULATION_LOCAL_STORE', populationState: JSON.parse(cachedPopulationState) });
+      const populationState = JSON.parse(cachedPopulationState);
+
+      // old data structure that may still be in local store gets reset
+      if (populationState.population.hasOwnProperty("w1c1b000p00")) {
+        populationDispatch({ type: 'POPULATION_LOCAL_STORE', populationState: JSON.parse(cachedPopulationState) });
+      } else {
+        populationDispatch({ type: "POPULATION_RESET" })
+      }
     } 
     appDispatch({type: 'SET_LANGUAGE', language: lang});
   }, [])

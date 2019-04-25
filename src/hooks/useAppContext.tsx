@@ -11,7 +11,7 @@ import { PopulationActionTypes } from './usePopulationReducer'
 interface ContextTypes {
   appDispatch: React.Dispatch<AppActionTypes>,
   options: { [key: string]: { increaseDecrease: number, withElectricity: boolean}},
-  population: {[key: number]: number},
+  population: {[key: string]: number},
   populationDispatch: React.Dispatch<PopulationActionTypes>,
   showChainGlobal: boolean,
   showOptions: boolean,

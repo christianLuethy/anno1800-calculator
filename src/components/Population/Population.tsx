@@ -19,7 +19,7 @@ import styles from './Population.module.css';
 
 interface PopulationFormPropTypes {
   language: string,
-  neededProducts: number[],
+  neededProducts: string[],
 }
 
 const PopulationForm = ({ language, neededProducts   }: PopulationFormPropTypes) => {

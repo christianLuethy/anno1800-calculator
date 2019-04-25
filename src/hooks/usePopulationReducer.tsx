@@ -3,11 +3,11 @@ import { useReducer } from 'react';
 import Product from '../components/Needs/Product';
 
 interface PopulationStateTypes {
-  neededProducts: number[],
+  neededProducts: string[],
   needs: {
-    basic: {[key: number]: number},
-    luxury: {[key: number]: number},
-    [key: string]: {[key: number]: number},
+    basic: {[key: string]: number},
+    luxury: {[key: string]: number},
+    [key: string]: {[key: string]: number},
   },
   options: {
     [key: string]: {
@@ -34,13 +34,13 @@ const initialPopulationState: PopulationStateTypes = {
     
   },
   population: {
-    '20100000': 0, // Farmers
-    '20200000': 0, // Workers
-    '20300000': 0, // Artisans
-    '20400000': 0, // Engineers
-    '20500000': 0, // Investors
-    '30100000': 0, // Jornaleros
-    '30200000': 0, // Obreros
+    w1c1b000p00: 0, // Farmers
+    w1c2b000p00: 0, // Workers
+    w1c3b000p00: 0, // Artisans
+    w1c4b000p00: 0, // Engineers
+    w1c5b000p00: 0, // Investors
+    w2c1b000p00: 0, // Jornaleros
+    w2c2b000p00: 0, // Obreros
   },
 }
 
@@ -63,7 +63,7 @@ const populationReducer = (state: PopulationStateTypes, action: PopulationAction
       const newPopulation = { ...state.population, [action.id]: action.number };
       
       const newOptions: PopulationStateTypes["options"] = {}
-      checkIfNeeded(newPopulation).filter((id) => id % 10 !== 0).map((product) => parameters.products[product].producerIds).forEach((ids) => { ids.forEach((id) => { newOptions[id] = { increaseDecrease: 0, withElectricity: false}})})
+      checkIfNeeded(newPopulation).filter((id) => id.substring(0, 2) === "w0").map((product) => parameters.products[product].producerIds).forEach((ids) => { ids.forEach((id) => { newOptions[id] = { increaseDecrease: 0, withElectricity: false}})})
 
       newState = Object.assign({}, state, { population: newPopulation, neededProducts: checkIfNeeded(newPopulation), needs: calculateNeeds(newPopulation), options: newOptions});
       localStorage.setItem('populationState', JSON.stringify(newState));
@@ -82,14 +82,14 @@ const calculateNeeds = (population: PopulationStateTypes["population"], populati
   const calculatedNeeds: PopulationStateTypes["needs"] = {basic: {}, luxury: {}}
   
   Object.keys(population).forEach((id) => {
-    const world = Number.parseInt(id) < 30000000 ? 'oldWorld' : 'newWorld'
+    const world = id.substring(0, 2) === "w1" ? 'oldWorld' : 'newWorld'
     populationParameters[world].classes[id].needs.forEach((need: NeedType) => {
-      // if the need is a Product (Public Service Buildings are divideable by 10)
-      if (need.id % 10 !== 0) { 
+      // if the need is a Product
+      if (need.id.substring(0, 2) === "w0") { 
         // the prevValue is needed because multiple classes can need the same product and their values need to be added
-        const prevValue = calculatedNeeds[need.type][need.id] || 0; 
+        const prevValue = calculatedNeeds[need.type.toLowerCase()][need.id] || 0; 
 
-        calculatedNeeds[need.type][need.id] = prevValue + need.perMinute * population[id]
+        calculatedNeeds[need.type.toLowerCase()][need.id] = prevValue + need.perMinute * population[id]
       }
     })
   })
@@ -97,11 +97,10 @@ const calculateNeeds = (population: PopulationStateTypes["population"], populati
   return calculatedNeeds
 }
 
-const checkIfNeeded = (newPopulation: {[key: number]: number}, populationParameters: PopulationType  = parameters.population) => {
-  const neededProducts: Set<number> = new Set();
-  Object.keys(newPopulation).forEach((classIdString) => {
-    const classId = Number.parseInt(classIdString);
-    const world = classId < 30000000 ? 'oldWorld' : 'newWorld';
+const checkIfNeeded = (newPopulation: {[key: string]: number}, populationParameters: PopulationType  = parameters.population) => {
+  const neededProducts: Set<string> = new Set();
+  Object.keys(newPopulation).forEach((classId) => {
+    const world = classId.substring(0, 2) === "w1" ? 'oldWorld' : 'newWorld';
     populationParameters[world].classes[classId].needs.forEach((need: NeedType) => {
       need.atPopulationOf <= newPopulation[classId] && neededProducts.add(need.id)
     })

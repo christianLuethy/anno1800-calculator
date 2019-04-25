@@ -14,7 +14,7 @@ import styles from './Needs.module.css'
 
 interface ProductPropTypes {
   language: string,
-  productID: number,
+  productID: string,
   productNeed: number,
 }
 
@@ -22,15 +22,18 @@ const Product = ({ language, productID, productNeed }: ProductPropTypes): any =>
   const product = parameters.products[productID];
   const tpm = productNeed.toFixed(2);
 
-  const buildingList = product.producerIds.map((producerId: number, index: number) => {
-    return <ProductionBuilding 
-      buildingID={producerId}  
+  const buildingList = product.producerIds.map((producerId: string, index: number) => {
+    const building = parameters.buildings[producerId];
+    if (building.type === "PRODUCTION") {
+      return <ProductionBuilding 
+      building={building}  
       isAlternative={index === 0 ? false : true} 
       isEndProducer={product.isEndProduct ? true : false}
       key={producerId} 
       language={language} 
       productNeed={productNeed} 
     />
+    }
   })
 
   return product 

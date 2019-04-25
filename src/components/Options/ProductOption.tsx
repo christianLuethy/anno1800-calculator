@@ -19,7 +19,7 @@ interface ProductOptionTypes {
 
 const ProductOption = ({buildingID}: ProductOptionTypes) => {
   const { options, populationDispatch} = useAppContext();
-  const building = parameters.buildings.production[Number.parseInt(buildingID)];
+  const building = parameters.buildings[buildingID];
 
   const handleChange = (value: any) => {
     populationDispatch({ type: 'INCREASE_DECREASE_CHANGE', id: buildingID, value: value})

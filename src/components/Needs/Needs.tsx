@@ -16,11 +16,11 @@ import styles from './Needs.module.css';
 interface NeedsPropTypes {
   language: string,
   needs: {
-    basic: {[key: number]: number},
-    luxury: {[key: number]: number},
-    [key: string]: {[key: number]: number},
+    basic: {[key: string]: number},
+    luxury: {[key: string]: number},
+    [key: string]: {[key: string]: number},
   },
-  neededProducts: number[],
+  neededProducts: string[],
 }
 
 
@@ -28,14 +28,13 @@ const Needs = ({ language, needs, neededProducts }: NeedsPropTypes): any => {
   
   const needDivs = Object.keys(needs).map((type: string) => {
     const needsOfType = Object.keys(needs[type]).map((productID: string) => {
-      const productIDNumber = Number.parseInt(productID);
 
-      return neededProducts.find((number) => number === productIDNumber) 
+      return neededProducts.find((number) => number === productID) 
         ? <Product 
-            key={productIDNumber} 
+            key={productID} 
             language={language} 
-            productID={productIDNumber} 
-            productNeed={needs[type][productIDNumber]}
+            productID={productID} 
+            productNeed={needs[type][productID]}
           /> 
         : null
     })
